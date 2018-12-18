@@ -1,0 +1,91 @@
+html
+  head
+    title Jobubu
+    = csrf_meta_tags
+
+    meta charset="UTF-8" /
+    meta http-equiv="X-UA-Compatible" content="chrome=1" /
+    meta name="viewport" content="width=device-width, initial-scale=1.0" /
+    meta name="author" content="Wellcode Global" /
+    meta name="description" content="Website for Personal Web Design owned by Wellcode Global" /
+    meta name="keywords" content="website, website builder, low cost website, lowcost website, personal web design, design, personal web, wellcode, wellcodeglobal, wellcode global, html, css, scss, javascript, js" /
+    /meta name="robots" content="index, follow" /
+    meta name="copyright" content="Wellcode Global 2018" /
+    meta name="distribution" content="Global" /
+    meta name="rating" content="General" /
+    /meta name="google-site-verification" content="CpVhxvqnJR6-GIBm9ApJMlbPi19U43042P33pRrErSs" /
+    meta name="apple-mobile-web-app-capable" content="yes" /
+    meta content="yes" name="apple-touch-fullscreen" /
+    meta name="apple-mobile-web-app-status-bar-style" content="black" /
+
+    link rel="dns-prefetch" href="https://fonts.googleapis.com/" /
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" /
+    link rel="shortcut icon" href="logo-main.png" sizes=("16x16 24x24 32x32 48x48 64x64") /
+
+    = stylesheet_link_tag "application"
+
+    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    = javascript_include_tag "https://use.fontawesome.com/releases/v5.4.2/js/all.js", defer: true
+    
+  body class=("#{controller_name} #{action_name}")
+    .container
+      .row
+        .header.shadow__outset--sm
+          .d-flex.centered-items
+            .col-2
+              .d-flex.justify-content-start
+                .header__img
+                  a href="/"
+                    = image_tag("logo-main.png")
+            .col-10
+              .d-flex.justify-content-end
+                .header__content
+                  a.btn.btn-standard--primary href="/"
+                    p 
+                      i.fas.fa-home
+                      | Home
+                  a.btn.btn-standard--primary href="/clients"
+                    p 
+                      i.fas.fa-user-tie
+                      | Data Klien
+                  a.btn.btn-standard--primary href="/agents"
+                    p 
+                      i.fas.fa-user-lock
+                      | Data Agen
+                  a.btn.btn-standard--primary href="/prices"
+                    p 
+                      i.fas.fa-comments-dollar
+                      | Data Harga
+                  .header__content__icon id="todolistBtn"
+                    i.fas.fa-plus
+                  .header__content__icon
+                    i.fas.fa-bell
+                  a.btn.btn-standard href="/"
+                    p 
+                      i.fas.fa-long-arrow-alt-right
+                      | Keluar
+        = yield
+
+    .modal#todolistModal
+      .modal__content
+        .d-flex.centered-items
+          .col-6
+            .d-flex.justify-content-start
+              h3 Buat To-Do List Baru
+          .col-6
+            .d-flex.justify-content-end
+              span.close &times;
+        form action=""
+          input type="text" name="" placeholder="Nama klien"/
+          input type="date" name="" placeholder="Tanggal reminder klien"/
+          input type="text" name="" placeholder="Status"/
+          input type="text" name="" placeholder="Harga tawaran klien"/
+          input type="text" name="" placeholder="Nama agen"/
+          input type="date" name="" placeholder="Tanggal reminder agen"/
+          input type="text" name="" placeholder="Harga tawaran agen"/
+          input type="text" name="" placeholder="Harga fix"/
+          input type="text" name="" placeholder="Catatan"/
+          .col-12
+            .d-flex.justify-content-center
+              button.btn.btn-standard--primary type="Submit" Buat 
+    = javascript_include_tag "application"
